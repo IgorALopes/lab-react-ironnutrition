@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import foods from './foods.json';
+import FoodBox from './components/FoodBox/FoodBox';
+import AddFoodForm from './components/AddFoodForm/AddFoodForm';
+import { Divider } from 'antd';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddFoodForm/>
+      <Divider>Food List</Divider>
+      {foods.map((currentFood) => {
+        return (
+          <FoodBox
+            name = {currentFood.name}
+            calories = {currentFood.calories}
+            servings = {currentFood.servings}
+            image = {currentFood.image}
+          />
+        )})}
     </div>
   );
 }
-
 export default App;
